@@ -33,7 +33,7 @@ const defaultValues: Partial<ProfileFormValues> = {
 };
 
 // Profile form
-export function DemoForm() {
+export default function DemoForm() {
     const form = useForm<ProfileFormValues>({
         resolver: zodResolver(profileFormSchema),
         defaultValues,

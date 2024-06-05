@@ -12,6 +12,7 @@ import {
   CommandEmpty,
   CommandGroup,
   CommandInput,
+  CommandList,
   CommandItem,
 } from "../components/ui/command";
 import {
@@ -63,8 +64,9 @@ type AccountFormValues = z.infer<typeof accountFormSchema>;
 
 // This can come from your database or API.
 const defaultValues: Partial<AccountFormValues> = {
-  // name: "Your name",
-  // dob: new Date("2023-01-23"),
+  name: "Your name",
+  dob: new Date("2023-01-23"),
+  language: "zh"
 };
 
 // Account Form
@@ -147,6 +149,7 @@ export default function DemoForm() {
         <FormField
           control={form.control}
           name="language"
+          defaultValue="en"
           render={({ field }) => (
             <FormItem className="flex flex-col">
               <FormLabel>Language</FormLabel>
@@ -175,9 +178,11 @@ export default function DemoForm() {
                     <CommandInput placeholder="Search language..." />
                     <CommandEmpty>No language found.</CommandEmpty>
                     <CommandGroup>
-                      {languages.map((language) => (
+                    <CommandList>
+                    {languages.map((language) => (
                         <CommandItem
                           value={language.label}
+                          defaultValue={"en"}
                           key={language.value}
                           onSelect={() => {
                             form.setValue("language", language.value);
@@ -194,6 +199,7 @@ export default function DemoForm() {
                           {language.label}
                         </CommandItem>
                       ))}
+                    </CommandList>
                     </CommandGroup>
                   </Command>
                 </PopoverContent>

@@ -29,7 +29,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "../components/ui/popover";
-import { toast } from "../components/ui/use-toast";
 
 const languages = [
   { label: "English", value: "en" },
@@ -75,20 +74,15 @@ export default function DemoForm() {
     defaultValues,
   });
 
-  function onSubmit(data: AccountFormValues) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
+  const onSubmit = form.handleSubmit((data) => {
+    const dataget = JSON.stringify(data);
+    alert(dataget);
+    console.log(dataget);
+  });
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={onSubmit} className="space-y-8">
         <FormField
           control={form.control}
           name="name"

@@ -27,7 +27,12 @@ export default function DemoForm() {
   } = useForm<FormValues>({
     resolver: resolver,
   });
-  const onSubmit = handleSubmit((data) => alert(JSON.stringify(data)));
+  
+  const onSubmit = handleSubmit((data) => {
+    const dataget = JSON.stringify(data);
+    alert(dataget);
+    console.log(dataget);
+  });
 
   return (
     <div className="App">

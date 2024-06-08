@@ -137,7 +137,7 @@ const Carousel = React.forwardRef<
         <div
           ref={ref}
           onKeyDownCapture={handleKeyDown}
-          className={cn("gtw-relative", className)}
+          className={cn("relative", className)}
           role="region"
           aria-roledescription="carousel"
           {...props}
@@ -145,7 +145,7 @@ const Carousel = React.forwardRef<
           {children}
         </div>
       </CarouselContext.Provider>
-    )
+    );
   }
 )
 Carousel.displayName = "Carousel"
@@ -157,18 +157,18 @@ const CarouselContent = React.forwardRef<
   const { carouselRef, orientation } = useCarousel()
 
   return (
-    <div ref={carouselRef} className="gtw-overflow-hidden">
+    <div ref={carouselRef} className="overflow-hidden">
       <div
         ref={ref}
         className={cn(
-          "gtw-flex",
-          orientation === "horizontal" ? "gtw--ml-4" : "gtw--mt-4 gtw-flex-col",
+          "flex",
+          orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
           className
         )}
         {...props}
       />
     </div>
-  )
+  );
 })
 CarouselContent.displayName = "CarouselContent"
 
@@ -184,13 +184,13 @@ const CarouselItem = React.forwardRef<
       role="group"
       aria-roledescription="slide"
       className={cn(
-        "gtw-min-w-0 gtw-shrink-0 gtw-grow-0 gtw-basis-full",
-        orientation === "horizontal" ? "gtw-pl-4" : "gtw-pt-4",
+        "min-w-0 shrink-0 grow-0 basis-full",
+        orientation === "horizontal" ? "pl-4" : "pt-4",
         className
       )}
       {...props}
     />
-  )
+  );
 })
 CarouselItem.displayName = "CarouselItem"
 
@@ -206,20 +206,20 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "gtw-absolute gtw- gtw-h-8 gtw-w-8 gtw-rounded-full",
+        "absolute  h-8 w-8 rounded-full",
         orientation === "horizontal"
-          ? "gtw--left-12 gtw-top-1/2 gtw--translate-y-1/2"
-          : "gtw--top-12 gtw-left-1/2 gtw--translate-x-1/2 gtw-rotate-90",
+          ? "-left-12 top-1/2 -translate-y-1/2"
+          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeft className="gtw-h-4 gtw-w-4" />
-      <span className="gtw-sr-only">Previous slide</span>
+      <ArrowLeft className="h-4 w-4" />
+      <span className="sr-only">Previous slide</span>
     </Button>
-  )
+  );
 })
 CarouselPrevious.displayName = "CarouselPrevious"
 
@@ -235,20 +235,20 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "gtw-absolute gtw-h-8 gtw-w-8 gtw-rounded-full",
+        "absolute h-8 w-8 rounded-full",
         orientation === "horizontal"
-          ? "gtw--right-12 gtw-top-1/2 gtw--translate-y-1/2"
-          : "gtw--bottom-12 gtw-left-1/2 gtw--translate-x-1/2 gtw-rotate-90",
+          ? "-right-12 top-1/2 -translate-y-1/2"
+          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRight className="gtw-h-4 gtw-w-4" />
-      <span className="gtw-sr-only">Next slide</span>
+      <ArrowRight className="h-4 w-4" />
+      <span className="sr-only">Next slide</span>
     </Button>
-  )
+  );
 })
 CarouselNext.displayName = "CarouselNext"
 

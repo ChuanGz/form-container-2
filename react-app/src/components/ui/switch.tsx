@@ -11,7 +11,7 @@ const Switch = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SwitchPrimitives.Root
     className={cn(
-      "gtw-peer gtw-inline-flex gtw-h-6 gtw-w-11 gtw-shrink-0 gtw-cursor-pointer gtw-items-center gtw-rounded-full gtw-border-2 gtw-border-transparent gtw-transition-colors focus-visible:gtw-outline-none focus-visible:gtw-ring-2 focus-visible:gtw-ring-ring focus-visible:gtw-ring-offset-2 focus-visible:gtw-ring-offset-background disabled:gtw-cursor-not-allowed disabled:gtw-opacity-50 data-[state=checked]:gtw-bg-primary data-[state=unchecked]:gtw-bg-input",
+      "peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input",
       className
     )}
     {...props}
@@ -19,11 +19,11 @@ const Switch = React.forwardRef<
   >
     <SwitchPrimitives.Thumb
       className={cn(
-        "gtw-pointer-events-none gtw-block gtw-h-5 gtw-w-5 gtw-rounded-full gtw-bg-background gtw-shadow-lg gtw-ring-0 gtw-transition-transform data-[state=checked]:gtw-translate-x-5 data-[state=unchecked]:gtw-translate-x-0"
+        "pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0"
       )}
     />
   </SwitchPrimitives.Root>
-))
+));
 Switch.displayName = SwitchPrimitives.Root.displayName
 
 export { Switch }

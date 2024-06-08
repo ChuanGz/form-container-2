@@ -5,25 +5,25 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "gtw-inline-flex gtw-items-center gtw-justify-center gtw-whitespace-nowrap gtw-rounded-md gtw-text-sm gtw-font-medium gtw-ring-offset-background gtw-transition-colors focus-visible:gtw-outline-none focus-visible:gtw-ring-2 focus-visible:gtw-ring-ring focus-visible:gtw-ring-offset-2 disabled:gtw-pointer-events-none disabled:gtw-opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "gtw-bg-primary gtw-text-primary-foreground hover:gtw-bg-primary/90",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
         destructive:
-          "gtw-bg-destructive gtw-text-destructive-foreground hover:gtw-bg-destructive/90",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "gtw-border gtw-border-input gtw-bg-background hover:gtw-bg-accent hover:gtw-text-accent-foreground",
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary:
-          "gtw-bg-secondary gtw-text-secondary-foreground hover:gtw-bg-secondary/80",
-        ghost: "hover:gtw-bg-accent hover:gtw-text-accent-foreground",
-        link: "gtw-text-primary gtw-underline-offset-4 hover:gtw-underline",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "gtw-h-10 gtw-px-4 gtw-py-2",
-        sm: "gtw-h-9 gtw-rounded-md gtw-px-3",
-        lg: "gtw-h-11 gtw-rounded-md gtw-px-8",
-        icon: "gtw-h-10 gtw-w-10",
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {
@@ -31,7 +31,7 @@ const buttonVariants = cva(
       size: "default",
     },
   }
-)
+);
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,

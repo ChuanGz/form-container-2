@@ -4,24 +4,24 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "gtw-inline-flex gtw-items-center gtw-rounded-full gtw-border gtw-px-2.5 gtw-py-0.5 gtw-text-xs gtw-font-semibold gtw-transition-colors focus:gtw-outline-none focus:gtw-ring-2 focus:gtw-ring-ring focus:gtw-ring-offset-2",
+  "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
   {
     variants: {
       variant: {
         default:
-          "gtw-border-transparent gtw-bg-primary gtw-text-primary-foreground hover:gtw-bg-primary/80",
+          "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
         secondary:
-          "gtw-border-transparent gtw-bg-secondary gtw-text-secondary-foreground hover:gtw-bg-secondary/80",
+          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
         destructive:
-          "gtw-border-transparent gtw-bg-destructive gtw-text-destructive-foreground hover:gtw-bg-destructive/80",
-        outline: "gtw-text-foreground",
+          "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
+        outline: "text-foreground",
       },
     },
     defaultVariants: {
       variant: "default",
     },
   }
-)
+);
 
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,

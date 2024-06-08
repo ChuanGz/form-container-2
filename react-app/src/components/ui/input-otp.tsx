@@ -16,18 +16,18 @@ const InputOTP = React.forwardRef<
       "flex items-center gap-2 has-[:disabled]:opacity-50",
       containerClassName
     )}
-    className={cn("disabled:gtw-cursor-not-allowed", className)}
+    className={cn("disabled:cursor-not-allowed", className)}
     {...props}
   />
-))
+));
 InputOTP.displayName = "InputOTP"
 
 const InputOTPGroup = React.forwardRef<
   React.ElementRef<"div">,
   React.ComponentPropsWithoutRef<"div">
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("gtw-flex gtw-items-center", className)} {...props} />
-))
+  <div ref={ref} className={cn("flex items-center", className)} {...props} />
+));
 InputOTPGroup.displayName = "InputOTPGroup"
 
 const InputOTPSlot = React.forwardRef<
@@ -41,20 +41,20 @@ const InputOTPSlot = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "gtw-relative gtw-flex gtw-h-10 gtw-w-10 gtw-items-center gtw-justify-center gtw-border-y gtw-border-r gtw-border-input gtw-text-sm gtw-transition-all first:gtw-rounded-l-md first:gtw-border-l last:gtw-rounded-r-md",
-        isActive && "gtw-z-10 gtw-ring-2 gtw-ring-ring gtw-ring-offset-background",
+        "relative flex h-10 w-10 items-center justify-center border-y border-r border-input text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md",
+        isActive && "z-10 ring-2 ring-ring ring-offset-background",
         className
       )}
       {...props}
     >
       {char}
       {hasFakeCaret && (
-        <div className="gtw-pointer-events-none gtw-absolute gtw-inset-0 gtw-flex gtw-items-center gtw-justify-center">
-          <div className="gtw-h-4 gtw-w-px gtw-animate-caret-blink gtw-bg-foreground gtw-duration-1000" />
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <div className="h-4 w-px animate-caret-blink bg-foreground duration-1000" />
         </div>
       )}
     </div>
-  )
+  );
 })
 InputOTPSlot.displayName = "InputOTPSlot"
 

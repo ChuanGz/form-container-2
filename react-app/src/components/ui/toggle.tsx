@@ -7,18 +7,18 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const toggleVariants = cva(
-  "gtw-inline-flex gtw-items-center gtw-justify-center gtw-rounded-md gtw-text-sm gtw-font-medium gtw-ring-offset-background gtw-transition-colors hover:gtw-bg-muted hover:gtw-text-muted-foreground focus-visible:gtw-outline-none focus-visible:gtw-ring-2 focus-visible:gtw-ring-ring focus-visible:gtw-ring-offset-2 disabled:gtw-pointer-events-none disabled:gtw-opacity-50 data-[state=on]:gtw-bg-accent data-[state=on]:gtw-text-accent-foreground",
+  "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground",
   {
     variants: {
       variant: {
-        default: "gtw-bg-transparent",
+        default: "bg-transparent",
         outline:
-          "gtw-border gtw-border-input gtw-bg-transparent hover:gtw-bg-accent hover:gtw-text-accent-foreground",
+          "border border-input bg-transparent hover:bg-accent hover:text-accent-foreground",
       },
       size: {
-        default: "gtw-h-10 gtw-px-3",
-        sm: "gtw-h-9 gtw-px-2.5",
-        lg: "gtw-h-11 gtw-px-5",
+        default: "h-10 px-3",
+        sm: "h-9 px-2.5",
+        lg: "h-11 px-5",
       },
     },
     defaultVariants: {
@@ -26,7 +26,7 @@ const toggleVariants = cva(
       size: "default",
     },
   }
-)
+);
 
 const Toggle = React.forwardRef<
   React.ElementRef<typeof TogglePrimitive.Root>,

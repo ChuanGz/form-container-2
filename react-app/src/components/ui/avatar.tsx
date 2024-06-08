@@ -12,12 +12,12 @@ const Avatar = React.forwardRef<
   <AvatarPrimitive.Root
     ref={ref}
     className={cn(
-      "gtw-relative gtw-flex gtw-h-10 gtw-w-10 gtw-shrink-0 gtw-overflow-hidden gtw-rounded-full",
+      "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full",
       className
     )}
     {...props}
   />
-))
+));
 Avatar.displayName = AvatarPrimitive.Root.displayName
 
 const AvatarImage = React.forwardRef<
@@ -26,10 +26,10 @@ const AvatarImage = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Image
     ref={ref}
-    className={cn("gtw-aspect-square gtw-h-full gtw-w-full", className)}
+    className={cn("aspect-square h-full w-full", className)}
     {...props}
   />
-))
+));
 AvatarImage.displayName = AvatarPrimitive.Image.displayName
 
 const AvatarFallback = React.forwardRef<
@@ -39,12 +39,12 @@ const AvatarFallback = React.forwardRef<
   <AvatarPrimitive.Fallback
     ref={ref}
     className={cn(
-      "gtw-flex gtw-h-full gtw-w-full gtw-items-center gtw-justify-center gtw-rounded-full gtw-bg-muted",
+      "flex h-full w-full items-center justify-center rounded-full bg-muted",
       className
     )}
     {...props}
   />
-))
+));
 AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
 
 export { Avatar, AvatarImage, AvatarFallback }

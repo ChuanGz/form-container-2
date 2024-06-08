@@ -68,9 +68,9 @@
 
 @layer base {
   * {
-    @apply gtw-border-border;
+    @apply border-border;
   }
   body {
-    @apply gtw-bg-background gtw-text-foreground;
+    @apply bg-background text-foreground;
   }
 }

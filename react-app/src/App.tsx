@@ -1,12 +1,9 @@
 import './styles/globals.css'
 import './styles/App.css'
-import DemoForm from "./demos/DemoForm5";
+import DemoDialog1 from "./demos/dialog/DemoDialog1";
 
 function App() {
-
-  return (
-    <DemoForm />
-  )
+  return <DemoDialog1 />;
 }
 
-export default App
+export default App;

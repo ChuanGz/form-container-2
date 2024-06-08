@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { Button } from "../components/ui/button"
+import { Button } from "../../components/ui/button";
 import {
   Form,
   FormControl,
@@ -13,8 +13,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../components/ui/form"
-import { Textarea } from "../components/ui/textarea"
+} from "../../components/ui/form";
+import { Textarea } from "../../components/ui/textarea";
 
 const FormSchema = z.object({
   bio: z
@@ -25,13 +25,13 @@ const FormSchema = z.object({
     .max(160, {
       message: "Bio must not be longer than 30 characters.",
     }),
-})
+});
 
 // TextArea Form
 export default function DemoForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-  })
+  });
 
   const onSubmit = form.handleSubmit((data) => {
     const dataget = JSON.stringify(data);
@@ -65,5 +65,5 @@ export default function DemoForm() {
         <Button type="submit">Submit</Button>
       </form>
     </Form>
-  )
+  );
 }

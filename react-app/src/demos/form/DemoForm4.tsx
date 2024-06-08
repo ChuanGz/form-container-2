@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { CalendarIcon } from "@radix-ui/react-icons"
-import { format } from "date-fns"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { CalendarIcon } from "@radix-ui/react-icons";
+import { format } from "date-fns";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { cn } from "@/lib/utils"
-import { Button } from "../components/ui/button"
-import { Calendar } from "../components/ui/calendar"
+import { cn } from "@/lib/utils";
+import { Button } from "../../components/ui/button";
+import { Calendar } from "../../components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -17,24 +17,24 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../components/ui/form"
+} from "../../components/ui/form";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "../components/ui/popover"
+} from "../../components/ui/popover";
 
 const FormSchema = z.object({
   dob: z.date({
     required_error: "A date of birth is required.",
   }),
-})
+});
 
 // Calendar Form
 export default function DemoForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-  })
+  });
 
   const onSubmit = form.handleSubmit((data) => {
     const dataget = JSON.stringify(data);
@@ -92,5 +92,5 @@ export default function DemoForm() {
         <Button type="submit">Submit</Button>
       </form>
     </Form>
-  )
+  );
 }

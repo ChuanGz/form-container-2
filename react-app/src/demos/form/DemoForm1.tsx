@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 
-import { Button } from "../components/ui/button";
+import { Button } from "../../components/ui/button";
 import {
   Form,
   FormControl,
@@ -11,9 +11,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../components/ui/form";
+} from "../../components/ui/form";
 
-import { Input } from "../components/ui/input";
+import { Input } from "../../components/ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -32,16 +32,16 @@ const defaultValues: Partial<ProfileFormValues> = {
 
 // Profile form
 export default function DemoForm() {
-    const form = useForm<ProfileFormValues>({
-        resolver: zodResolver(profileFormSchema),
-        defaultValues,
-      });
+  const form = useForm<ProfileFormValues>({
+    resolver: zodResolver(profileFormSchema),
+    defaultValues,
+  });
 
-      const onSubmit = form.handleSubmit((data) => {
-        const dataget = JSON.stringify(data);
-        alert(dataget);
-        console.log(dataget);
-      });
+  const onSubmit = form.handleSubmit((data) => {
+    const dataget = JSON.stringify(data);
+    alert(dataget);
+    console.log(dataget);
+  });
 
   return (
     <Form {...form}>

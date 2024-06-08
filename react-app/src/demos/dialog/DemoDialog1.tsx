@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { cn } from "@/lib/utils";
-import { Button } from "../components/ui/button";
-import { Calendar } from "../components/ui/calendar";
+import { Button } from "../../components/ui/button";
+import { Calendar } from "../../components/ui/calendar";
 import {
   Command,
   CommandEmpty,
@@ -14,7 +14,7 @@ import {
   CommandInput,
   CommandList,
   CommandItem,
-} from "../components/ui/command";
+} from "../../components/ui/command";
 import {
   Form,
   FormControl,
@@ -23,13 +23,22 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../components/ui/form";
-import { Input } from "../components/ui/input";
+} from "../../components/ui/form";
+import { Input } from "../../components/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "../components/ui/popover";
+} from "../../components/ui/popover";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const languages = [
   { label: "English", value: "en" },
@@ -70,7 +79,7 @@ const defaultValues: Partial<AccountFormValues> = {
 };
 
 // Account Form
-export default function DemoForm() {
+const DemoForm = () => {
   const form = useForm<AccountFormValues>({
     resolver: zodResolver(accountFormSchema),
     defaultValues,
@@ -84,7 +93,7 @@ export default function DemoForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={onSubmit} className="space-y-1 text-left">
+      <form id="acount123" onSubmit={onSubmit} className="space-y-1 text-left">
         <FormField
           control={form.control}
           name="name"
@@ -216,4 +225,30 @@ export default function DemoForm() {
       </form>
     </Form>
   );
-}
+};
+
+const DemoDialog1 = () => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline">Edit Profile (DEMO)</Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Edit profile</DialogTitle>
+          <DialogDescription>
+            Make changes to your profile here. Click save when you're done.
+          </DialogDescription>
+        </DialogHeader>
+        <DemoForm></DemoForm>
+        <DialogFooter>
+          <Button form="acount123" type="submit">
+            Save changes
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+export default DemoDialog1;

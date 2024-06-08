@@ -84,7 +84,7 @@ export default function DemoForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={onSubmit} className="space-y-1">
+      <form onSubmit={onSubmit} className="space-y-1 text-left">
         <FormField
           control={form.control}
           name="name"

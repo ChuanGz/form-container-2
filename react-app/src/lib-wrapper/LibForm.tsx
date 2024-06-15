@@ -1,9 +1,9 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import { FieldValues, Noop, useForm } from "react-hook-form";
 
 interface FormProps {
   defaultValues: Partial<FieldValues>;
-  children: ReactElement;
+  children: React.JSX.Element;
   onSubmit: Noop;
 }
 

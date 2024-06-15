@@ -1,5 +1,3 @@
-"use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import { format } from "date-fns";
@@ -18,6 +16,7 @@ import {
   FormLabel,
   FormMessage,
 } from "../../components/ui/form";
+
 import {
   Popover,
   PopoverContent,
@@ -30,7 +29,6 @@ const FormSchema = z.object({
   }),
 });
 
-// Calendar Form
 export default function DemoForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),

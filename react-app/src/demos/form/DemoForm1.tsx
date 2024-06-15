@@ -1,5 +1,3 @@
-"use client";
-
 import { z } from "zod";
 
 import { Button } from "../../components/ui/button";
@@ -14,7 +12,7 @@ import {
 } from "../../components/ui/form";
 
 import { Input } from "../../components/ui/input";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const profileFormSchema = z.object({
@@ -23,16 +21,12 @@ const profileFormSchema = z.object({
   }),
 });
 
-type ProfileFormValues = z.infer<typeof profileFormSchema>;
-
-// This can come from your database or API.
-const defaultValues: Partial<ProfileFormValues> = {
+const defaultValues: Partial<FieldValues> = {
   username: "Your name",
 };
 
-// Profile form
 export default function DemoForm() {
-  const form = useForm<ProfileFormValues>({
+  const form = useForm<FieldValues>({
     resolver: zodResolver(profileFormSchema),
     defaultValues,
   });

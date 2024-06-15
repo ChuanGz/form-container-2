@@ -16,7 +16,6 @@ import {
   CommandItem,
 } from "../../components/ui/command";
 import {
-  Form,
   FormControl,
   FormDescription,
   FormField,
@@ -62,14 +61,12 @@ const accountFormSchema = z.object({
 
 type AccountFormValues = z.infer<typeof accountFormSchema>;
 
-// This can come from your database or API.
 const defaultValues: Partial<AccountFormValues> = {
   name: "Your name",
   dob: new Date("2023-01-23"),
   language: "zh",
 };
 
-// Account Form
 export default function DemoForm() {
   const form = useForm<AccountFormValues>({
     resolver: zodResolver(accountFormSchema),
@@ -83,137 +80,135 @@ export default function DemoForm() {
   });
 
   return (
-    <Form {...form}>
-      <form onSubmit={onSubmit} className="space-y-1 text-left">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel>User Name</FormLabel>
-              <FormControl>
-                <Input placeholder="Your name" {...field} />
-              </FormControl>
-              <FormDescription>
-                This is the name that will be displayed on your profile and in
-                emails.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="dob"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel>Date of birth</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "w-full pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
-                      )}
-                    >
-                      {field.value ? (
-                        format(field.value, "PPP")
-                      ) : (
-                        <span>Pick a date</span>
-                      )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-2" align="start">
-                  <Calendar
-                    mode="single"
-                    selected={field.value}
-                    onSelect={field.onChange}
-                    disabled={(date) =>
-                      date > new Date("2025-01-01") ||
-                      date < new Date("1900-01-01")
-                    }
-                    initialFocus
-                  />
-                </PopoverContent>
-              </Popover>
-              <FormDescription>
-                Your date of birth is used to calculate your age.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="language"
-          defaultValue="en"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel>Language</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant="outline"
-                      role="combobox"
-                      className={cn(
-                        " justify-between",
-                        !field.value && "text-muted-foreground"
-                      )}
-                    >
-                      {field.value
-                        ? languages.find(
-                            (language) => language.value === field.value
-                          )?.label
-                        : "Select language"}
-                      <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-[300px] p-2">
-                  <Command>
-                    <CommandInput placeholder="Search language..." />
-                    <CommandEmpty>No language found.</CommandEmpty>
-                    <CommandGroup>
-                      <CommandList>
-                        {languages.map((language) => (
-                          <CommandItem
-                            value={language.label}
-                            defaultValue={"en"}
-                            key={language.value}
-                            onSelect={() => {
-                              form.setValue("language", language.value);
-                            }}
-                          >
-                            <CheckIcon
-                              className={cn(
-                                "mr-2 h-4 w-4",
-                                language.value === field.value
-                                  ? "opacity-100"
-                                  : "opacity-0"
-                              )}
-                            />
-                            {language.label}
-                          </CommandItem>
-                        ))}
-                      </CommandList>
-                    </CommandGroup>
-                  </Command>
-                </PopoverContent>
-              </Popover>
-              <FormDescription>
-                This is the language that will be used in the dashboard.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Update account</Button>
-      </form>
-    </Form>
+    <form onSubmit={onSubmit} className="space-y-1 text-left">
+      <FormField
+        control={form.control}
+        name="name"
+        render={({ field }) => (
+          <FormItem className="flex flex-col">
+            <FormLabel>User Name</FormLabel>
+            <FormControl>
+              <Input placeholder="Your name" {...field} />
+            </FormControl>
+            <FormDescription>
+              This is the name that will be displayed on your profile and in
+              emails.
+            </FormDescription>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="dob"
+        render={({ field }) => (
+          <FormItem className="flex flex-col">
+            <FormLabel>Date of birth</FormLabel>
+            <Popover>
+              <PopoverTrigger asChild>
+                <FormControl>
+                  <Button
+                    variant={"outline"}
+                    className={cn(
+                      "w-full pl-3 text-left font-normal",
+                      !field.value && "text-muted-foreground"
+                    )}
+                  >
+                    {field.value ? (
+                      format(field.value, "PPP")
+                    ) : (
+                      <span>Pick a date</span>
+                    )}
+                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                  </Button>
+                </FormControl>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-2" align="start">
+                <Calendar
+                  mode="single"
+                  selected={field.value}
+                  onSelect={field.onChange}
+                  disabled={(date) =>
+                    date > new Date("2025-01-01") ||
+                    date < new Date("1900-01-01")
+                  }
+                  initialFocus
+                />
+              </PopoverContent>
+            </Popover>
+            <FormDescription>
+              Your date of birth is used to calculate your age.
+            </FormDescription>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="language"
+        defaultValue="en"
+        render={({ field }) => (
+          <FormItem className="flex flex-col">
+            <FormLabel>Language</FormLabel>
+            <Popover>
+              <PopoverTrigger asChild>
+                <FormControl>
+                  <Button
+                    variant="outline"
+                    role="combobox"
+                    className={cn(
+                      " justify-between",
+                      !field.value && "text-muted-foreground"
+                    )}
+                  >
+                    {field.value
+                      ? languages.find(
+                          (language) => language.value === field.value
+                        )?.label
+                      : "Select language"}
+                    <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                  </Button>
+                </FormControl>
+              </PopoverTrigger>
+              <PopoverContent className="w-[300px] p-2">
+                <Command>
+                  <CommandInput placeholder="Search language..." />
+                  <CommandEmpty>No language found.</CommandEmpty>
+                  <CommandGroup>
+                    <CommandList>
+                      {languages.map((language) => (
+                        <CommandItem
+                          value={language.label}
+                          defaultValue={"en"}
+                          key={language.value}
+                          onSelect={() => {
+                            form.setValue("language", language.value);
+                          }}
+                        >
+                          <CheckIcon
+                            className={cn(
+                              "mr-2 h-4 w-4",
+                              language.value === field.value
+                                ? "opacity-100"
+                                : "opacity-0"
+                            )}
+                          />
+                          {language.label}
+                        </CommandItem>
+                      ))}
+                    </CommandList>
+                  </CommandGroup>
+                </Command>
+              </PopoverContent>
+            </Popover>
+            <FormDescription>
+              This is the language that will be used in the dashboard.
+            </FormDescription>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <Button type="submit">Update account</Button>
+    </form>
   );
 }

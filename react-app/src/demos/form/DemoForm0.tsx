@@ -1,33 +1,21 @@
-import { useForm, Resolver } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-type FormValues = {
-  firstName: string;
-  lastName: string;
-};
-
-const resolver: Resolver<FormValues> = async (values) => {
-  return {
-    values: !values.firstName ? {} : values,
-    errors: !values.firstName
-      ? {
-          firstName: {
-            type: "required",
-            message: "This is required.",
-          },
-        }
-      : {},
-  };
-};
+const myObject = z.object({
+  firstName: z.string(),
+  lastName: z.string(),
+});
 
 export default function DemoForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({
-    resolver: resolver,
+  } = useForm<z.infer<typeof myObject>>({
+    resolver: zodResolver(myObject),
   });
-  
+
   const onSubmit = handleSubmit((data) => {
     const dataget = JSON.stringify(data);
     alert(dataget);

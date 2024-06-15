@@ -1,7 +1,13 @@
-import React from "react";
-import { useForm } from "react-hook-form";
+import React, { ReactElement } from "react";
+import { FieldValues, Noop, useForm } from "react-hook-form";
 
-export function LibForm({ defaultValues, children, onSubmit }) {
+interface FormProps {
+  defaultValues: Partial<FieldValues>;
+  children: ReactElement;
+  onSubmit: Noop;
+}
+
+export function LibForm({ defaultValues, children, onSubmit }: FormProps) {
   const { handleSubmit, register } = useForm({ defaultValues });
 
   return (

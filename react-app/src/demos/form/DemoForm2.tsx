@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Button } from "../../components/ui/button";
@@ -13,6 +13,7 @@ import {
   FormMessage,
 } from "../../components/ui/form";
 import { Textarea } from "../../components/ui/textarea";
+import TextAreaWrapper from "@/lib-wrapper/TextAreaWrapper";
 
 const FormSchema = z.object({
   bio: z
@@ -26,7 +27,7 @@ const FormSchema = z.object({
 });
 
 export default function DemoForm() {
-  const form = useForm<z.infer<typeof FormSchema>>({
+  const form = useForm<FieldValues>({
     resolver: zodResolver(FormSchema),
   });
 
@@ -39,6 +40,15 @@ export default function DemoForm() {
   return (
     <Form {...form}>
       <form onSubmit={onSubmit} className="w-2/3 space-y-6">
+        <TextAreaWrapper
+          control={form.control}
+          name={"bio"}
+          label={"Bio"}
+          placeholder={"Tell us a little bit about yourself"}
+          description={
+            "You can <span>@mention</span> other users and organizations."
+          }
+        />
         <FormField
           control={form.control}
           name="bio"

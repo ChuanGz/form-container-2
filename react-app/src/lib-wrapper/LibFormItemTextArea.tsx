@@ -8,22 +8,30 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { ControllerRenderProps, FieldPath, FieldValues } from "react-hook-form";
 
-export const LibFormItemTextArea = <
+export interface LibFormItemTextAreaProps<
   TData extends FieldValues = FieldValues,
   TPathData extends FieldPath<TData> = FieldPath<TData>
->({
-  field,
-  label,
-  description,
-}: {
+> {
   field: ControllerRenderProps<TData, TPathData>;
   label?: string;
   description?: string;
-}) => (
+}
+
+export const LibFormItemTextArea = ({
+  field: { onChange, onBlur, value, name, ref },
+  label,
+  description,
+}: LibFormItemTextAreaProps) => (
   <FormItem>
     <FormLabel>{label}</FormLabel>
     <FormControl>
-      <Textarea {...field} />
+      <Textarea
+        onChange={onChange}
+        onBlur={onBlur}
+        value={value}
+        name={name}
+        ref={ref}
+      />
     </FormControl>
     <FormDescription>{description}</FormDescription>
     <FormMessage />

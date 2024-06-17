@@ -31,12 +31,10 @@ export default function DemoForm() {
           <input {...register("firstName")} placeholder="Kotaro" />
           {errors?.firstName && <p>{errors.firstName.message}</p>}
         </div>
-
         <div>
           <label>Last Name</label>
           <input {...register("lastName")} placeholder="Sugawara" />
         </div>
-
         <input type="submit" />
       </form>
     </div>
